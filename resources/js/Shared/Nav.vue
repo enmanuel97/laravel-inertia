@@ -1,25 +1,25 @@
 <template>
-	<nav class="mt-6">
-		<ul class="list-disc">
+	<nav>
+		<ul class="flex list-disc space-x-4 list-inside">
 			<li>
-				<NavLink 
-					href="/" 
+				<NavLink
+					href="/"
 					:active="$page.url === '/'"
 				>
 					Home
 				</NavLink>
 			</li>
 			<li>
-				<NavLink 
-					href="/users" 
+				<NavLink
+					href="/users"
 					:active="$page.url === '/users'"
 				>
 					Users
 				</NavLink>
 			</li>
 			<li>
-				<NavLink 
-					href="/settings" 
+				<NavLink
+					href="/settings"
 					:active="$page.url === '/settings'"
 				>
 					Settings

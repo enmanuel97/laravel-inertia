@@ -1,16 +1,10 @@
 <template>
-	<div>
-		<h1 class="text-4xl font-bold">Home</h1>
-
-		<Nav />		
-	</div>
+	<Layout>
+		<h1 class="text-3xl">
+            Home
+        </h1>
+	</Layout>
 </template>
-<script>
-import Nav from "../Shared/Nav";
-
-export default {
-	components: {
-		Nav
-	}
-}
+<script setup>
+    import Layout from "../Shared/Layout";
 </script>

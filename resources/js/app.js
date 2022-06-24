@@ -3,7 +3,8 @@ import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from '@inertiajs/progress';
 
 InertiaProgress.init({
-    showSpinner: true
+    showSpinner: true,
+    color: 'red'
 });
 
 createInertiaApp({
