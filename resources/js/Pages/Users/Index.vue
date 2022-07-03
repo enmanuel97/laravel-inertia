@@ -2,9 +2,12 @@
     <Head title="Users" />
 
     <div class="flex justify-between mb-6">
-        <h1 class="text-3xl">Users</h1>
+        <div class="flex items-center">
+            <h1 class="text-3xl">Users</h1>
+            <Link class="text-blue-500 text-sm ml-2" href="/users/create">New User</Link>
+        </div>
 
-        <input type="text" placeholder="Search..." class="border px-2rounded">
+        <input v-model="search" type="text" placeholder="Search..." class="border px-2 rounded-lg">
     </div>
 
     <div class="flex flex-col">
@@ -36,8 +39,20 @@
 </template>
 
 <script setup>
-    import Pagination from '../Shared/Pagination'
-    defineProps({
-        users: Object
+    import Pagination from '../../Shared/Pagination'
+    import { ref, watch } from "vue";
+    import { Inertia } from "@inertiajs/inertia";
+    let props = defineProps({
+        users: Object,
+        filters: Object,
     })
+
+    let search = ref(props.filters.search || '')
+
+    watch(search, value => {
+        Inertia.get(`/users`, { search: value }, {
+            preserveState: true,
+            replace: true
+        });
+    });
 </script>
