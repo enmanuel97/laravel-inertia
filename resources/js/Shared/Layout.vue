@@ -1,4 +1,8 @@
 <template>
+    <Head>
+        <title>My App</title>
+        <meta type="description" content="Default meta tag description" head-key="description">
+    </Head>
     <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
             <div class="flex items-center">
@@ -23,7 +27,7 @@ import Nav from "../Shared/Nav";
 export default {
     name: "Layout",
     components: {
-        Nav
+        Nav,
     },
     computed: {
         username() {

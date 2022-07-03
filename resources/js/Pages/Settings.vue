@@ -1,8 +1,6 @@
 <template>
-	<Layout>
-		<h1 class="text-3xl">Settings</h1>
-	</Layout>
+    <Head>
+        <title>Settings</title>
+    </Head>
+    <h1 class="text-3xl">Settings</h1>
 </template>
-<script setup>
-    import Layout from "../Shared/Layout";
-</script>
