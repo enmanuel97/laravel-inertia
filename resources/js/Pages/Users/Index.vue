@@ -4,7 +4,7 @@
     <div class="flex justify-between mb-6">
         <div class="flex items-center">
             <h1 class="text-3xl">Users</h1>
-            <Link class="text-blue-500 text-sm ml-2" href="/users/create">New User</Link>
+            <Link v-if="can.createUser" class="text-blue-500 text-sm ml-2" href="/users/create">New User</Link>
         </div>
 
         <input v-model="search" type="text" placeholder="Search..." class="border px-2 rounded-lg">
@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <td v-if="user.can.edit" class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 </td>
                             </tr>
@@ -42,17 +42,20 @@
     import Pagination from '../../Shared/Pagination'
     import { ref, watch } from "vue";
     import { Inertia } from "@inertiajs/inertia";
+    import throttle from 'lodash/throttle';
+
     let props = defineProps({
         users: Object,
         filters: Object,
+        can: Object
     })
 
     let search = ref(props.filters.search || '')
 
-    watch(search, value => {
+    watch(search, throttle(function(value) {
         Inertia.get(`/users`, { search: value }, {
             preserveState: true,
             replace: true
         });
-    });
+    }, 500));
 </script>
